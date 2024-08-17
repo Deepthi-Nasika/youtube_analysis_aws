@@ -11,20 +11,21 @@ Link: https://www.kaggle.com/datasets/datasnaek/youtube-new
 
 ### Steps
 1) Data Ingestion - Ingest the data from multiple sources into an S3 bucket\
-       a) Load JSON data files using shell command:\
+   - Load JSON data files using shell command:\
 ```aws s3 cp . s3://s3_bucket_name/youtube/raw_stats_json/ --recursive --exclude "*" --include "*.json"```\
-       b) Load CSV data files w.r.t. regions using shell command:\
+   - Load CSV data files w.r.t. regions using shell command:\
            For example, to load CAvideos.csv file ```aws s3 cp CAvideos.csv s3://s3_bucket_name/youtube/raw_stats/region=ca/```
-2) Data Catalog - Crawlers are created to crawl through the data from the S3 bucket and create data catalog tables on top of it
-3) ETL - Lambda function is created to convert data from JSON to Apache Parquet format when the data is loaded into the S3 bucket
+3) Data Catalog - Crawlers are created to crawl through the data from the S3 bucket and create data catalog tables on top of it
+4) ETL - Lambda function is created to convert data from JSON to Apache Parquet format when the data is loaded into the S3 bucket. The formatted data is stored in different S3 locations
+5) 
 
 ### AWS Services
 1) Amazon S3(Simple Storage Service) - It is an object storage service that stores large amounts of data with scalability, availability, security, and efficient performance
 2) AWS IAM(Identity Access and Management) - It is a service that helps you securely control access to AWS resources.
 3) AWS Glue - It is a serverless data integration service to create, manage, and monitor high-quality data across data lakes and pipelines for analysis, machine learning, and application development.
 4) AWS Lambda - It is a serverless computing service that runs code in response to events
-5) SQL Query - AWS Athena
-6) Analysis - AWS Quicksight
+5) AWS Athena - It is an interactive query service that makes it simple to analyze data directly in Amazon S3
+6) Amazon QuickSight - It is a business intelligence service that helps in building visualizations and performing analysis
 
 ### Analysis Dashboards
 #### Number of Likes grouped by Genre
