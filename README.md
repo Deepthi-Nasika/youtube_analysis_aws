@@ -32,5 +32,8 @@ Link: https://www.kaggle.com/datasets/datasnaek/youtube-new
 6) Amazon QuickSight - It is a business intelligence service that helps in building visualizations and performing analysis
 
 ### Analysis Dashboards
-- Number of Likes grouped by Genre: [no_of_likes_by_genre.pdf](https://github.com/user-attachments/files/16631101/no_of_likes_by_genre.pdf)
-- Number of Views grouped by Genre: [no_of_views_by_genre.pdf](https://github.com/user-attachments/files/16631103/no_of_views_by_genre.pdf)
+- Number of Likes by Category: [no_of_likes_by_genre.pdf](https://github.com/user-attachments/files/16631101/no_of_likes_by_genre.pdf)
+  - The most liked youtube videos are of ```category - Music``` followed by People & Blogs, Entertainment, and etc
+- Number of Views by Category: [no_of_views_by_genre.pdf](https://github.com/user-attachments/files/16631103/no_of_views_by_genre.pdf)
+  - The most viewed youtube videos are of ```category - Music``` followed by People & Blogs, Entertainment, and etc
+  
