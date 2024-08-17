@@ -6,27 +6,25 @@ If a business wants to run an advertising campaign on YouTube, the business has 
 The main goal of this project is to streamline the structured, and semi-structured data from the Kaggle dataset into a proper standard format securely. To store large amounts of data, manage, and perform the analysis we need to use the cloud - to handle all the cases efficiently AWS services are used in this project. Dashboards are built to analyze the trending metrics for the video popularity on YouTube concerning regions.
 
 ### Dataset
-1) The dataset is a daily record of the top 200 trending YouTube videos for certain months in multiple regions.
-2) Every region's data is stored in separate files with different ```category_id```. It includes multiple metrics like video title, channel title, tags, views, comment count, likes, and dislikes.
-3) All the attributes related to a specific video are stored in JSON files respective to each region. \
-4) Link: https://www.kaggle.com/datasets/datasnaek/youtube-new
+The dataset is a daily record of the top 200 trending YouTube videos for certain months in multiple regions. Every region's data is stored in separate files with different ```category_id```. It includes multiple metrics like video title, channel title, tags, views, comment count, likes, and dislikes. All the attributes related to a specific video are stored in JSON files respective to each region. \
+Link: https://www.kaggle.com/datasets/datasnaek/youtube-new
 
 ### Steps
-#### Data Ingestion
-Ingest the data from multiple sources into an S3 bucket
-1) Load JSON data files using shell command:\
+1) Data Ingestion - Ingest the data from multiple sources into an S3 bucket\
+       a) Load JSON data files using shell command:\
 ```aws s3 cp . s3://s3_bucket_name/youtube/raw_stats_json/ --recursive --exclude "*" --include "*.json"```\
-2) Load CSV data files w.r.t. regions using shell command:\
-For example, to load CAvideos.csv file ```aws s3 cp CAvideos.csv s3://s3_bucket_name/youtube/raw_stats/region=ca/```
-
-#### Data Lake
+       b) Load CSV data files w.r.t. regions using shell command:\
+           For example, to load CAvideos.csv file ```aws s3 cp CAvideos.csv s3://s3_bucket_name/youtube/raw_stats/region=ca/```
+2) Data Catalog - Crawlers are created to crawl through the data from the S3 bucket and create data catalog tables on top of it
+3) ETL - Lambda function is created to convert data from JSON to Apache Parquet format when the data is loaded into the S3 bucket
 
 ### AWS Services
-1) Data Storage - AWS S3 Bucket
-2) Glue Jobs - Crawlers
-3) AWS Lambda Function
-4) SQL Query - AWS Athena
-5) Analysis - AWS Quicksight
+1) Amazon S3(Simple Storage Service) - It is an object storage service that stores large amounts of data with scalability, availability, security, and efficient performance
+2) AWS IAM(Identity Access and Management) - It is a service that helps you securely control access to AWS resources.
+3) AWS Glue - It is a serverless data integration service to create, manage, and monitor high-quality data across data lakes and pipelines for analysis, machine learning, and application development.
+4) AWS Lambda - It is a serverless computing service that runs code in response to events
+5) SQL Query - AWS Athena
+6) Analysis - AWS Quicksight
 
 ### Analysis Dashboards
 #### Number of Likes grouped by Genre
